@@ -1,28 +1,33 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DashboardLayout from '@/layout/DashboardLayout.vue'
-import { RouteNames } from '@/router/constants/routeNames'
+import LoginPage from '@/views/LoginView/LoginPage.vue'
+import { RouteNames } from '@/router/constants/RouteNames'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: '',
+      component: LoginPage,
+      name: RouteNames.LOGIN
+    },
+    {
+      path: '/dashboard',
       component: DashboardLayout,
-      redirect: { path: '/all-leads' },
+      redirect: { name: RouteNames.ALL_LEADS },
       children: [
         {
-          path: '/all-leads',
+          path: 'all-leads',
           name: RouteNames.ALL_LEADS,
           component: () => import('@/components/AllLeads/AllLeads.vue')
         },
         {
-          path: '/master-inbox',
+          path: 'master-inbox',
           name: RouteNames.MASTER_INBOX,
           component: () => import('@/components/AllLeads/AllLeads.vue')
         },
         {
-          path: '/email-campaigns',
+          path: 'email-campaigns',
           name: RouteNames.EMAIL_CAMPAIGNS,
           component: () => import('@/components/EmailCampaigns/EmailCampaigns.vue')
         }

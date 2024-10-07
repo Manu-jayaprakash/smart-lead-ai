@@ -3,15 +3,18 @@
     <el-aside width="200px">
       <el-scrollbar>
         <el-menu :default-active="$route.name" router>
-          <el-menu-item :index="RouteNames.ALL_LEADS" :route="RouteNames.ALL_LEADS">
+          <el-menu-item :index="RouteNames.ALL_LEADS" :route="{ name: RouteNames.ALL_LEADS }">
             <el-icon><setting /></el-icon>
             <span>All Leads</span>
           </el-menu-item>
-          <el-menu-item :index="RouteNames.MASTER_INBOX" :route="RouteNames.MASTER_INBOX">
+          <el-menu-item :index="RouteNames.MASTER_INBOX" :route="{ name: RouteNames.MASTER_INBOX }">
             <el-icon><setting /></el-icon>
             <span>Master Inbox</span>
           </el-menu-item>
-          <el-menu-item :index="RouteNames.EMAIL_CAMPAIGNS" :route="RouteNames.EMAIL_CAMPAIGNS">
+          <el-menu-item
+            :index="RouteNames.EMAIL_CAMPAIGNS"
+            :route="{ name: RouteNames.EMAIL_CAMPAIGNS }"
+          >
             <el-icon><setting /></el-icon>
             <span>Email Campaigns</span>
           </el-menu-item>
@@ -49,7 +52,7 @@
 
 <script lang="ts" setup>
 import { Setting } from '@element-plus/icons-vue'
-import { RouteNames } from '@/router/constants/routeNames'
+import { RouteNames } from '@/router/constants/RouteNames'
 </script>
 
 <style scoped lang="scss">
