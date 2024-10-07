@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import DashboardLayout from '@/layout/DashboardLayout.vue'
+import { RouteNames } from '@/router/constants/routeNames'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,16 +8,26 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: DashboardLayout,
+      redirect: { path: '/all-leads' },
+      children: [
+        {
+          path: '/all-leads',
+          name: RouteNames.ALL_LEADS,
+          component: () => import('@/components/AllLeads/AllLeads.vue')
+        },
+        {
+          path: '/master-inbox',
+          name: RouteNames.MASTER_INBOX,
+          component: () => import('@/components/AllLeads/AllLeads.vue')
+        },
+        {
+          path: '/email-campaigns',
+          name: RouteNames.EMAIL_CAMPAIGNS,
+          component: () => import('@/components/EmailCampaigns/EmailCampaigns.vue')
+        }
+      ]
     }
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
   ]
 })
 
