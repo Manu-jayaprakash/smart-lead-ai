@@ -1,31 +1,40 @@
 <template>
   <FormCard class="login-page">
-    <h2 class="login-page-heading">Welcome to Smartlead.ai</h2>
+    <h2 class="login-page-heading text-center">Welcome to Smartlead.ai</h2>
 
-    <p>Log in to your account</p>
+    <p class="text-center">Log in to your account</p>
 
-    <CommonInput v-model="email" label="Email" placeholder="enter email" class="mb-md mt-lg" />
+    <CommonInput
+      v-model="email"
+      label="Email"
+      placeholder="enter email"
+      class="mb-md mt-lg"
+      inputType="email"
+    />
 
-    <CommonInput v-model="password" label="Password" placeholder="enter password" />
+    <CommonInput
+      v-model="password"
+      label="Password"
+      placeholder="enter password"
+      inputType="password"
+    />
 
     <CommonButton
       label="Sign in"
       class="mt-lg width-100"
-      is-disabled
-      @click="$router.push({ name: RouteNames.ALL_LEADS })"
+      :is-disabled="!email || !password"
+      @click="handleLoginSubmit"
     />
   </FormCard>
 </template>
 
 <script lang="ts" setup>
-import { RouteNames } from '@/router/constants/RouteNames'
 import FormCard from '@/components/common/FormCard.vue'
 import CommonButton from '@/components/common/CommonButton.vue'
 import CommonInput from '@/components/common/CommonInput.vue'
+import useLoginPage from './composables/useLoginPage'
 
-import { ref } from 'vue'
-const email = ref('')
-const password = ref('')
+const { email, password, handleLoginSubmit } = useLoginPage()
 </script>
 
 <style lang="scss" scoped>

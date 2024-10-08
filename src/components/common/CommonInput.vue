@@ -4,13 +4,19 @@
       {{ label }}
     </div>
 
-    <el-input v-model="model" :placeholder="placeholder" />
+    <el-input
+      v-model="model"
+      :placeholder="placeholder"
+      :type="inputType"
+      :show-password="inputType === 'password'"
+    />
   </div>
 </template>
 <script lang="ts" setup>
 type Props = {
   label?: string
   placeholder?: string
+  inputType?: string
 }
 
 defineProps<Props>()
