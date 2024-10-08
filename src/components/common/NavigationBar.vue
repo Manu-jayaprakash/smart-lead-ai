@@ -20,11 +20,13 @@ import { RouteNames } from '@/router/constants/RouteNames'
 
 const router = useRouter()
 
-const { setUserEmail } = useAuthStore()
+const { setUserEmail, setRoiAnnouncemnetViewed } = useAuthStore()
 
 const handleLogout = () => {
   void setUserEmail('')
+  void setRoiAnnouncemnetViewed(false)
   localStorage.removeItem('email')
+  localStorage.removeItem('is_roi_announcemnet_viewed')
   router.push({ name: RouteNames.LOGIN })
 }
 </script>
