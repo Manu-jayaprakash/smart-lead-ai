@@ -1,46 +1,42 @@
 <template>
   <el-container class="dashboard-layout__container">
-    <el-aside width="200px">
-      <el-scrollbar>
-        <el-menu :default-active="$route.name" router>
-          <el-menu-item :index="RouteNames.ALL_LEADS" :route="{ name: RouteNames.ALL_LEADS }">
-            <el-icon><setting /></el-icon>
-            <span>All Leads</span>
-          </el-menu-item>
-          <el-menu-item :index="RouteNames.MASTER_INBOX" :route="{ name: RouteNames.MASTER_INBOX }">
-            <el-icon><setting /></el-icon>
-            <span>Master Inbox</span>
-          </el-menu-item>
-          <el-menu-item
-            :index="RouteNames.EMAIL_CAMPAIGNS"
-            :route="{ name: RouteNames.EMAIL_CAMPAIGNS }"
-          >
-            <el-icon><setting /></el-icon>
-            <span>Email Campaigns</span>
-          </el-menu-item>
-        </el-menu>
-      </el-scrollbar>
+    <el-aside width="230px" class="dashboard-layout__container-aside">
+      <el-menu :default-active="$route.name" router text-color="#282B42">
+        <el-menu-item
+          :index="RouteNames.ALL_LEADS"
+          :route="{ name: RouteNames.ALL_LEADS }"
+          class="mt-sm"
+        >
+          <el-icon><setting /></el-icon>
+          <span>All Leads</span>
+        </el-menu-item>
+        <el-menu-item :index="RouteNames.MASTER_INBOX" :route="{ name: RouteNames.MASTER_INBOX }">
+          <el-icon><setting /></el-icon>
+          <span>Master Inbox</span>
+        </el-menu-item>
+        <el-menu-item
+          :index="RouteNames.EMAIL_CAMPAIGNS"
+          :route="{ name: RouteNames.EMAIL_CAMPAIGNS }"
+        >
+          <el-icon><setting /></el-icon>
+          <span>Email Campaigns</span>
+        </el-menu-item>
+      </el-menu>
+
+      <div class="aside-menu__footer">
+        <div class="flex align-center cursor-pointer" @click="handleRedirection">
+          <el-icon :size="20"><setting /></el-icon>
+          Join Slack Community
+        </div>
+
+        <div class="flex align-center cursor-pointer mt-lg mb-lg" @click="handleRedirection">
+          <el-icon :size="20"><setting /></el-icon>
+          Smartlead Tutorials
+        </div>
+      </div>
     </el-aside>
 
     <el-container>
-      <el-header style="text-align: right; font-size: 12px">
-        <div class="toolbar">
-          <el-dropdown>
-            <el-icon style="margin-right: 8px; margin-top: 1px">
-              <setting />
-            </el-icon>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item>View</el-dropdown-item>
-                <el-dropdown-item>Add</el-dropdown-item>
-                <el-dropdown-item>Delete</el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-          <span>Tom</span>
-        </div>
-      </el-header>
-
       <el-main>
         <el-scrollbar>
           <RouterView />
@@ -53,6 +49,10 @@
 <script lang="ts" setup>
 import { Setting } from '@element-plus/icons-vue'
 import { RouteNames } from '@/router/constants/RouteNames'
+
+const handleRedirection = () => {
+  window.open('https://google.com')
+}
 </script>
 
 <style scoped lang="scss">
@@ -65,23 +65,39 @@ import { RouteNames } from '@/router/constants/RouteNames'
 .dashboard-layout__container .el-aside {
   color: var(--el-text-color-primary);
   background: white;
-  height: 100vh;
+  height: calc(100vh - 130px);
 }
 
 .dashboard-layout__container .el-menu {
   border-right: none;
+  .el-menu-item {
+    padding-left: 0;
+    .el-icon {
+      margin-left: 1.25rem;
+    }
+    &::before {
+      content: '';
+      width: 3px;
+      height: 100%;
+    }
+  }
+  .is-active {
+    background: #757ae91a;
+    color: #282b42;
+    &::before {
+      background: #757ae9;
+    }
+  }
+}
+.dashboard-layout__container-aside {
+  position: relative;
 }
 
-/* 
-
-.layout-container-demo .el-main {
-  padding: 0;
+.aside-menu__footer {
+  position: absolute;
+  bottom: 0;
+  .el-icon {
+    margin: 0 20px;
+  }
 }
-.layout-container-demo .toolbar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  right: 20px;
-} */
 </style>

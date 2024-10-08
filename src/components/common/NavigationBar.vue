@@ -1,9 +1,9 @@
 <template>
   <el-menu
     mode="horizontal"
-    background-color="#545c64"
+    background-color="#00056A"
     text-color="#fff"
-    active-text-color="#ffd04b"
+    active-text-color="#fff"
     :ellipsis="false"
   >
     <div class="navigation-bar__logo">Logo</div>
@@ -35,6 +35,7 @@ const handleLogout = () => {
 .navigation-bar__logo {
   margin-right: auto;
   cursor: pointer;
+  color: white;
 }
 .el-menu--horizontal {
   --el-menu-horizontal-height: 50px;
