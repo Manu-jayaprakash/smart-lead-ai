@@ -19,17 +19,17 @@ const router = createRouter({
         {
           path: 'all-leads',
           name: RouteNames.ALL_LEADS,
-          component: () => import('@/components/AllLeads/AllLeads.vue')
+          component: () => import('@/components/all-leads/AllLeads.vue')
         },
         {
           path: 'master-inbox',
           name: RouteNames.MASTER_INBOX,
-          component: () => import('@/components/AllLeads/AllLeads.vue')
+          component: () => import('@/components/all-leads/AllLeads.vue')
         },
         {
           path: 'email-campaigns',
           name: RouteNames.EMAIL_CAMPAIGNS,
-          component: () => import('@/components/EmailCampaigns/EmailCampaigns.vue')
+          component: () => import('@/components/email-campaigns/EmailCampaigns.vue')
         }
       ]
     }

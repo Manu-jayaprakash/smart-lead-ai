@@ -1,6 +1,7 @@
 @import './base.css';
+@import './utility.scss';
 
 #app {
-  font-weight: normal;
+  /* font-weight: normal; */
   min-height: 100vh;
 }
