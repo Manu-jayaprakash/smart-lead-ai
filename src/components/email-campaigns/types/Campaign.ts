@@ -1,6 +1,13 @@
+export enum CampaignStatus {
+  ACTIVE = 'active',
+  STOPPED = 'stopped',
+  DRAFT = 'draft',
+  PAUSED = 'paused'
+}
+
 export type Campaign = {
   name: string
-  type: 'active' | 'stopped' | 'draft'
+  status: CampaignStatus
   percentage: number
   date_info: string
   sequence: string

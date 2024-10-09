@@ -10,7 +10,10 @@
       </span>
     </span>
 
-    <span class="">{{ label }}</span>
+    <span class="flex align-center">
+      {{ label }}
+      <slot name="label-icon" />
+    </span>
   </div>
 </template>
 <script lang="ts" setup>

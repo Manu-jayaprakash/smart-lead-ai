@@ -9,8 +9,8 @@
             type="circle"
             :percentage="scope.row.percentage"
             class="campaign-table__progress"
-            width="50"
-            color="#5ECA39"
+            :width="50"
+            :color="getStausColor(scope.row.status)"
           />
           <div>
             <div class="campaing-table__row-campaign-details-name flex align-center cursor-pointer">
@@ -18,7 +18,7 @@
               <el-icon><Link /></el-icon>
             </div>
             <div class="flex align-center">
-              <span class="campaing-table__row-campaign-details-status-dot mr-sm"></span>
+              <CampaignTableStatusDot :color="getStausColor(scope.row.status)" class="mr-sm" />
               <span class="campaing-table__row-label">
                 {{ scope.row.date_info }} | {{ scope.row.sequence }}
               </span>
@@ -29,7 +29,7 @@
     </el-table-column>
 
     <!-- Sent -->
-    <el-table-column label="Report">
+    <el-table-column label="Report" :width="70">
       <template #default="scope">
         <CampaignTableReportColumn label="Sent" :value="scope.row.sent" valueColor="#6E58F1" />
       </template>
@@ -43,7 +43,11 @@
           :value="scope.row.clicked"
           valueColor="#EEB728"
           :secondary-value="scope.row.click_percentage"
-        />
+        >
+          <template #label-icon v-if="scope.row.status === CampaignStatus.DRAFT">
+            <el-icon class="ml-xs" color="#DD9553"><WarnTriangleFilled /></el-icon>
+          </template>
+        </CampaignTableReportColumn>
       </template>
     </el-table-column>
 
@@ -55,7 +59,11 @@
           :value="scope.row.opened"
           valueColor="#BF51C1"
           :secondary-value="scope.row.open_percentage"
-        />
+        >
+          <template #label-icon v-if="scope.row.status === CampaignStatus.DRAFT">
+            <el-icon class="ml-xs" color="#DD9553"><WarnTriangleFilled /></el-icon>
+          </template>
+        </CampaignTableReportColumn>
       </template>
     </el-table-column>
 
@@ -67,7 +75,11 @@
           :value="scope.row.replied"
           valueColor="#51C1C1"
           :secondary-value="scope.row.reply_percentage"
-        />
+        >
+          <template #label-icon v-if="scope.row.status === CampaignStatus.DRAFT">
+            <el-icon class="ml-xs" color="#DD9553"><WarnTriangleFilled /></el-icon>
+          </template>
+        </CampaignTableReportColumn>
       </template>
     </el-table-column>
 
@@ -75,15 +87,19 @@
     <el-table-column>
       <template #default="scope">
         <CampaignTableReportColumn
-          label="Click"
+          label="Positive Reply"
           :value="scope.row.positive_reply"
           valueColor="#2CDB28"
           :secondary-value="scope.row.positive_reply_percentage"
-        />
+        >
+          <template #label-icon>
+            <el-icon class="ml-xs" color="#ABACC6"><InfoFilled /></el-icon>
+          </template>
+        </CampaignTableReportColumn>
       </template>
     </el-table-column>
 
-    <el-table-column width="160">
+    <el-table-column :width="160">
       <el-button :icon="VideoPause" size="small" />
       <el-button :icon="Edit" size="small" />
       <el-button :icon="More" size="small" />
@@ -92,12 +108,16 @@
 </template>
 
 <script lang="ts" setup>
-import { VideoPause, Edit, More } from '@element-plus/icons-vue'
-import { type Campaign } from '@/components/email-campaigns/types/Campaign'
+import { VideoPause, Edit, More, WarnTriangleFilled, InfoFilled } from '@element-plus/icons-vue'
+import { type Campaign, CampaignStatus } from '@/components/email-campaigns/types/Campaign'
 import { Link } from '@element-plus/icons-vue'
 import CampaignTableReportColumn from '@/components/email-campaigns/CampaignTableReportColumn.vue'
 import emailCampaingTableData from './constants/emailCampaingTableData'
 import { ref } from 'vue'
+import useCampaignTable from '@/components/email-campaigns/composables/useCampaignTable'
+import CampaignTableStatusDot from '@/components/email-campaigns/CampaignTableStatusDot.vue'
+
+const { getStausColor } = useCampaignTable()
 
 const emailCampaigns = ref<Campaign[]>(emailCampaingTableData)
 </script>
@@ -121,13 +141,5 @@ const emailCampaigns = ref<Campaign[]>(emailCampaingTableData)
 .campaing-table__row-label {
   color: #282b42;
   opacity: 0.6;
-}
-.campaing-table__row-campaign-details-status-dot {
-  height: 6px;
-  width: 6px;
-  background-color: #5eca39;
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 1;
 }
 </style>
