@@ -6,7 +6,9 @@
     active-text-color="#fff"
     :ellipsis="false"
   >
-    <div class="navigation-bar__logo">Logo</div>
+    <div class="navigation-bar__logo">
+      <img src="/src/assets/images/logo.svg" alt="logo" />
+    </div>
     <el-menu-item index="1">Processing Center</el-menu-item>
     <el-menu-item index="2">Info</el-menu-item>
     <el-menu-item index="3" @click="handleLogout">Logout</el-menu-item>
@@ -33,11 +35,12 @@ const handleLogout = () => {
 
 <style lang="scss" scoped>
 .navigation-bar__logo {
+  margin: 1.125rem auto 1.125rem 1.5rem;
   margin-right: auto;
   cursor: pointer;
   color: white;
 }
 .el-menu--horizontal {
-  --el-menu-horizontal-height: 50px;
+  --el-menu-horizontal-height: 80px;
 }
 </style>

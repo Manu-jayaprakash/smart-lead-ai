@@ -7,30 +7,30 @@
           :route="{ name: RouteNames.ALL_LEADS }"
           class="mt-sm"
         >
-          <el-icon><setting /></el-icon>
+          <el-icon><Guide /></el-icon>
           <span>All Leads</span>
         </el-menu-item>
         <el-menu-item :index="RouteNames.MASTER_INBOX" :route="{ name: RouteNames.MASTER_INBOX }">
-          <el-icon><setting /></el-icon>
+          <el-icon><MessageBox /></el-icon>
           <span>Master Inbox</span>
         </el-menu-item>
         <el-menu-item
           :index="RouteNames.EMAIL_CAMPAIGNS"
           :route="{ name: RouteNames.EMAIL_CAMPAIGNS }"
         >
-          <el-icon><setting /></el-icon>
+          <el-icon><Service /></el-icon>
           <span>Email Campaigns</span>
         </el-menu-item>
       </el-menu>
 
       <div class="aside-menu__footer">
         <div class="flex align-center cursor-pointer" @click="handleRedirection">
-          <el-icon :size="20"><setting /></el-icon>
+          <el-icon :size="20"><ChatDotRound /></el-icon>
           Join Slack Community
         </div>
 
         <div class="flex align-center cursor-pointer mt-lg mb-lg" @click="handleRedirection">
-          <el-icon :size="20"><setting /></el-icon>
+          <el-icon :size="20"><VideoPlay /></el-icon>
           Smartlead Tutorials
         </div>
       </div>
@@ -38,16 +38,16 @@
 
     <el-container>
       <el-main>
-        <el-scrollbar>
-          <RouterView />
-        </el-scrollbar>
+        <!-- <el-scrollbar> -->
+        <RouterView />
+        <!-- </el-scrollbar> -->
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script lang="ts" setup>
-import { Setting } from '@element-plus/icons-vue'
+import { ChatDotRound, Guide, MessageBox, Service, VideoPlay } from '@element-plus/icons-vue'
 import { RouteNames } from '@/router/constants/RouteNames'
 
 const handleRedirection = () => {
@@ -65,7 +65,7 @@ const handleRedirection = () => {
 .dashboard-layout__container .el-aside {
   color: var(--el-text-color-primary);
   background: white;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 160px);
 }
 
 .dashboard-layout__container .el-menu {
