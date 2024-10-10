@@ -37,7 +37,7 @@
     </el-aside>
 
     <el-container>
-      <el-main>
+      <el-main class="dashboard-layout__main">
         <!-- <el-scrollbar> -->
         <RouterView />
         <!-- </el-scrollbar> -->
@@ -91,6 +91,7 @@ const handleRedirection = () => {
 }
 .dashboard-layout__container-aside {
   position: relative;
+  border-right: 1px solid #e1e3ef;
 }
 
 .aside-menu__footer {
@@ -99,5 +100,8 @@ const handleRedirection = () => {
   .el-icon {
     margin: 0 20px;
   }
+}
+.dashboard-layout__main {
+  padding: 0px;
 }
 </style>
