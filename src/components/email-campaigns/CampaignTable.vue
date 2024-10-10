@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="emailCampaigns" row-class-name="campaing-table__row">
+  <el-table :data="filteredCampaigns" row-class-name="campaing-table__row">
     <el-table-column width="40" type="selection" />
     <!-- Campaign Details -->
     <el-table-column label="Campaign Details" width="360">
@@ -113,13 +113,27 @@ import { type Campaign, CampaignStatus } from '@/components/email-campaigns/type
 import { Link } from '@element-plus/icons-vue'
 import CampaignTableReportColumn from '@/components/email-campaigns/CampaignTableReportColumn.vue'
 import emailCampaingTableData from './constants/emailCampaingTableData'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import useCampaignTable from '@/components/email-campaigns/composables/useCampaignTable'
 import CampaignTableStatusDot from '@/components/email-campaigns/CampaignTableStatusDot.vue'
+
+const props = defineProps<{
+  searchText: string
+}>()
 
 const { getStausColor } = useCampaignTable()
 
 const emailCampaigns = ref<Campaign[]>(emailCampaingTableData)
+const filteredCampaigns = ref<Campaign[]>(emailCampaingTableData)
+
+watch(
+  () => props.searchText,
+  (value) => {
+    filteredCampaigns.value = emailCampaigns.value.filter((item) =>
+      item.name.toLowerCase().includes(value.toLocaleLowerCase())
+    )
+  }
+)
 </script>
 
 <style lang="scss" scoped>
