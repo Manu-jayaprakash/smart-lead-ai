@@ -56,6 +56,9 @@ const handleRedirection = () => {
 </script>
 
 <style scoped lang="scss">
+.dashboard-layout__container {
+  height: 100%;
+}
 .dashboard-layout__container .el-header {
   position: relative;
   background-color: var(--el-color-primary-light-7);
@@ -65,7 +68,6 @@ const handleRedirection = () => {
 .dashboard-layout__container .el-aside {
   color: var(--el-text-color-primary);
   background: white;
-  height: calc(100vh - 160px);
 }
 
 .dashboard-layout__container .el-menu {
