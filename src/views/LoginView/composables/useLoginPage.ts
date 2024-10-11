@@ -15,6 +15,7 @@ const useLoginPage = () => {
     const user = dummyUseCredentials.find((item) => item.email === email.value)
 
     if (user?.password !== password.value) {
+      alert('Logn credentials are invalid')
       return
     }
 
