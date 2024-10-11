@@ -18,7 +18,6 @@
 }
 
 .dashboard-layout__container .el-aside {
-  color: var(--el-text-color-primary);
   background: #fff;
 }
 
@@ -27,6 +26,6 @@
 }
 
 .dashboard-layout__main {
-  padding: 0px;
+  padding: 0;
 }
 </style>

@@ -52,6 +52,7 @@ const emailCampaignsTabTitle = computed(() => `All Campaigns (${emailCampaingTab
 .email-campaigns :deep(.el-tabs__item.is-active) {
   color: #282b42;
   font-weight: 500;
+  font-size: 1rem;
 }
 .email-campaigns__header-actions-cta {
   height: 32px;
@@ -59,5 +60,17 @@ const emailCampaignsTabTitle = computed(() => `All Campaigns (${emailCampaingTab
 .email-campaigns__header-actions-search :deep(.el-input__wrapper) {
   background-color: #fafaff;
   width: 16.25rem;
+}
+:deep(.el-tabs__nav) {
+  height: 3.75rem;
+  .el-tabs__item {
+    margin-top: 0.75rem;
+  }
+  .el-tabs__active-bar {
+    background-color: $primary;
+    height: 0.25rem;
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+  }
 }
 </style>

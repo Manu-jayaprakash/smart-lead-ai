@@ -93,9 +93,9 @@ const handleLogout = () => {
   background-color: #f7f8fe;
 }
 .navigation-bar-menu__stats-link {
-  color: #757ae9;
+  color: $primary;
   font-weight: 500;
-  border-bottom: 1px dotted #757ae9;
+  border-bottom: 1px dotted $primary;
 }
 :global(.navigation-bar-menu) {
   min-width: 21.375rem;

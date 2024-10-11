@@ -21,6 +21,6 @@
   bottom: 0;
   background-color: #fff;
   opacity: 0.2;
-  border-radius: 30px;
+  border-radius: 1.875rem;
 }
 </style>

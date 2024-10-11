@@ -15,6 +15,7 @@ const router = createRouter({
     {
       path: '/dashboard',
       component: DashboardPage,
+      name: RouteNames.DASHBOARD,
       redirect: { name: RouteNames.ALL_LEADS },
       meta: {
         requiresAuth: true

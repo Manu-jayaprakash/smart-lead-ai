@@ -59,7 +59,7 @@ const handleRedirection = () => {
     background: #757ae91a;
     color: #282b42;
     &::before {
-      background: #757ae9;
+      background: $primary;
     }
   }
 }
