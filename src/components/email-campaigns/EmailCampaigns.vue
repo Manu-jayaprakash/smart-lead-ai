@@ -10,9 +10,12 @@
       <CommonInput
         v-model="searchText"
         placeholder="Search Campaigns"
-        :prefix-icon="Search"
         class="email-campaigns__header-actions-search"
-      />
+      >
+        <template #prefix>
+          <el-icon><Search /></el-icon>
+        </template>
+      </CommonInput>
       <CommonButton label="+ Add Campaign" class="email-campaigns__header-actions-cta ml-lg" />
     </div>
   </div>

@@ -9,7 +9,7 @@ const useLoginPage = () => {
 
   const router = useRouter()
   const email = ref('user3@test.com')
-  const password = ref('test3')
+  const password = ref('test3_!@#')
 
   const handleLoginSubmit = () => {
     const user = dummyUseCredentials.find((item) => item.email === email.value)

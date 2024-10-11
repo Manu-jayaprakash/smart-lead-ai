@@ -1,14 +1,14 @@
 export const dummyUseCredentials = [
   {
     email: 'user1@test.com',
-    password: 'test1'
+    password: 'test1_!@#'
   },
   {
     email: 'user2@test.com',
-    password: 'test2'
+    password: 'test2_!@#'
   },
   {
     email: 'user3@test.com',
-    password: 'test3'
+    password: 'test3_!@#'
   }
 ]
