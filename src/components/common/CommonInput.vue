@@ -1,21 +1,17 @@
 <template>
-  <div>
-    <div v-if="label" class="common-input__label">
-      {{ label }}
-    </div>
-
-    <el-input
-      v-bind="$attrs"
-      v-model="model"
-      :placeholder="placeholder"
-      :type="inputType"
-      :show-password="inputType === 'password'"
-    />
-  </div>
+  <el-input
+    v-model="model"
+    :placeholder="placeholder"
+    :type="inputType"
+    :show-password="inputType === 'password'"
+  >
+    <template #prefix>
+      <slot name="prefix" />
+    </template>
+  </el-input>
 </template>
 <script lang="ts" setup>
 type Props = {
-  label?: string
   placeholder?: string
   inputType?: string
 }
@@ -26,10 +22,3 @@ const model = defineModel<string>({
   required: true
 })
 </script>
-
-<style lang="scss" scoped>
-.common-input__label {
-  line-height: 1.5rem;
-  color: #7a7d9c;
-}
-</style>
