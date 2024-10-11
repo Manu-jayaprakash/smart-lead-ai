@@ -21,7 +21,7 @@ const useLoginPage = () => {
     // after succesfull login, save email to store and redirect
     void setUserEmail(email.value)
     localStorage.setItem('email', email.value)
-    router.push({ name: RouteNames.ALL_LEADS })
+    router.push({ name: RouteNames.DASHBOARD })
   }
 
   return {

@@ -20,7 +20,7 @@ export const loginGuard: NavigationGuard = async (to, from, next) => {
 
   // Check if the user is authenticated
   if (store.isUserLoggedIn) {
-    next({ name: RouteNames.ALL_LEADS })
+    next({ name: RouteNames.DASHBOARD })
   } else {
     next()
   }
