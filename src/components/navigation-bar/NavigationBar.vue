@@ -5,6 +5,7 @@
     </div>
 
     <div class="navigation-bar__actions flex mr-lg" v-if="store.isUserLoggedIn">
+      <NavigationBarTrialValidity />
       <img src="/src/assets/images/question.svg" alt="question" class="cursor-pointer" />
       <img src="/src/assets/images/gifts.svg" alt="gift" class="cursor-pointer" />
 
@@ -16,6 +17,7 @@
 <script lang="ts" setup>
 import { useAuthStore } from '@/stores/useAuthStore'
 import NavigationBarMenu from '@/components/navigation-bar/NavigationBarMenu.vue'
+import NavigationBarTrialValidity from '@/components/navigation-bar/NavigationBarTrialValidity.vue'
 
 const store = useAuthStore()
 </script>

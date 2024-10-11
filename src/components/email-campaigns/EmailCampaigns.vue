@@ -7,7 +7,12 @@
     </el-tabs>
 
     <div class="email-campaigns__header-actions flex">
-      <CommonInput v-model="searchText" placeholder="Search Campaigns" />
+      <CommonInput
+        v-model="searchText"
+        placeholder="Search Campaigns"
+        :prefix-icon="Search"
+        class="email-campaigns__header-actions-search"
+      />
       <CommonButton label="+ Add Campaign" class="email-campaigns__header-actions-cta ml-lg" />
     </div>
   </div>
@@ -19,6 +24,7 @@ import CommonInput from '@/components/common/CommonInput.vue'
 import CommonButton from '@/components/common/CommonButton.vue'
 import { computed, ref } from 'vue'
 import emailCampaingTableData from './constants/emailCampaingTableData'
+import { Search } from '@element-plus/icons-vue'
 
 const searchText = ref('')
 const activeName = ref('campaigns')
@@ -49,5 +55,9 @@ const emailCampaignsTabTitle = computed(() => `All Campaigns (${emailCampaingTab
 }
 .email-campaigns__header-actions-cta {
   height: 32px;
+}
+.email-campaigns__header-actions-search :deep(.el-input__wrapper) {
+  background-color: #fafaff;
+  width: 16.25rem;
 }
 </style>

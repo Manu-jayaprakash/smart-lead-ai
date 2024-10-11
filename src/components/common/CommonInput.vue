@@ -5,6 +5,7 @@
     </div>
 
     <el-input
+      v-bind="$attrs"
       v-model="model"
       :placeholder="placeholder"
       :type="inputType"
