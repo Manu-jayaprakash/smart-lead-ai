@@ -1,4 +1,5 @@
 import { CampaignStatus } from '@/components/email-campaigns/types/Campaign'
+import { EditPen, Warning, VideoPause } from '@element-plus/icons-vue'
 
 const useCampaignTable = () => {
   const getStausColor = (status: CampaignStatus): string => {
@@ -14,8 +15,20 @@ const useCampaignTable = () => {
     }
   }
 
+  const progressIcon = (status: CampaignStatus) => {
+    switch (status) {
+      case CampaignStatus.STOPPED:
+        return Warning
+      case CampaignStatus.PAUSED:
+        return VideoPause
+      default:
+        return EditPen
+    }
+  }
+
   return {
-    getStausColor
+    getStausColor,
+    progressIcon
   }
 }
 

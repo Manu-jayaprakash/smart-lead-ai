@@ -11,7 +11,11 @@
             class="campaign-table__progress"
             :width="50"
             :color="getStausColor(scope.row.status)"
-          />
+          >
+            <el-icon v-if="scope.row.status !== CampaignStatus.ACTIVE" :size="16">
+              <component :is="progressIcon(scope.row.status)"></component>
+            </el-icon>
+          </el-progress>
           <div>
             <div class="campaing-table__row-campaign-details-name flex align-center cursor-pointer">
               <div class="mr-sm">{{ scope.row.name }}</div>
@@ -112,24 +116,23 @@ import { VideoPause, Edit, More, WarnTriangleFilled, InfoFilled } from '@element
 import { type Campaign, CampaignStatus } from '@/components/email-campaigns/types/Campaign'
 import { Link } from '@element-plus/icons-vue'
 import CampaignTableReportColumn from '@/components/email-campaigns/CampaignTableReportColumn.vue'
-import emailCampaingTableData from './constants/emailCampaingTableData'
 import { ref, watch } from 'vue'
 import useCampaignTable from '@/components/email-campaigns/composables/useCampaignTable'
 import CampaignTableStatusDot from '@/components/email-campaigns/CampaignTableStatusDot.vue'
 
 const props = defineProps<{
   searchText: string
+  campaigns: Campaign[]
 }>()
 
-const { getStausColor } = useCampaignTable()
+const { getStausColor, progressIcon } = useCampaignTable()
 
-const emailCampaigns = ref<Campaign[]>(emailCampaingTableData)
-const filteredCampaigns = ref<Campaign[]>(emailCampaingTableData)
+const filteredCampaigns = ref<Campaign[]>(props.campaigns)
 
 watch(
   () => props.searchText,
   (value) => {
-    filteredCampaigns.value = emailCampaigns.value.filter((item) =>
+    filteredCampaigns.value = props.campaigns.filter((item) =>
       item.name.toLowerCase().includes(value.toLocaleLowerCase())
     )
   }
@@ -147,7 +150,7 @@ watch(
   opacity: 0.6;
 }
 .campaing-table__row-campaign-details {
-  column-gap: 20px;
+  column-gap: 1.25rem;
 }
 .campaing-table__row-campaign-details-name {
   color: #6e58f1;

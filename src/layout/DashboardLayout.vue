@@ -23,7 +23,6 @@
 }
 
 .dashboard-layout__container-aside {
-  position: relative;
   border-right: 1px solid #e1e3ef;
 }
 

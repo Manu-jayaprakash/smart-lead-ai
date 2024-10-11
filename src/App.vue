@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import NavigationBar from '@/components/common/NavigationBar.vue'
+import NavigationBar from '@/components/navigation-bar/NavigationBar.vue'
 import { useAuthStore } from '@/stores/useAuthStore'
 import RoiAnnouncement from '@/components/roi-announcement/RoiAnnouncement.vue'
 

@@ -1,8 +1,8 @@
 <template>
   <div class="email-campaigns">
     <el-tabs v-model="activeName" class="demo-tabs">
-      <el-tab-pane label="All Campaigns (24)" name="campaigns" class="ml-md mr-md">
-        <CampaignTable :searchText="searchText" />
+      <el-tab-pane :label="emailCampaignsTabTitle" name="campaigns" class="ml-md mr-md">
+        <CampaignTable :searchText="searchText" :campaigns="emailCampaingTableData" />
       </el-tab-pane>
     </el-tabs>
 
@@ -17,10 +17,13 @@
 import CampaignTable from '@/components/email-campaigns/CampaignTable.vue'
 import CommonInput from '@/components/common/CommonInput.vue'
 import CommonButton from '@/components/common/CommonButton.vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import emailCampaingTableData from './constants/emailCampaingTableData'
 
 const searchText = ref('')
 const activeName = ref('campaigns')
+
+const emailCampaignsTabTitle = computed(() => `All Campaigns (${emailCampaingTableData?.length})`)
 </script>
 <style lang="scss" scoped>
 .email-campaigns {
