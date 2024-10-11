@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import DashboardLayout from '@/layout/DashboardLayout.vue'
+import DashboardPage from '@/views/DashboardView/DashboardPage.vue'
 import LoginPage from '@/views/LoginView/LoginPage.vue'
 import { RouteNames } from '@/router/constants/RouteNames'
 import { authGuard, loginGuard } from './navigationGuard/authGuard'
@@ -14,7 +14,7 @@ const router = createRouter({
     },
     {
       path: '/dashboard',
-      component: DashboardLayout,
+      component: DashboardPage,
       redirect: { name: RouteNames.ALL_LEADS },
       meta: {
         requiresAuth: true
